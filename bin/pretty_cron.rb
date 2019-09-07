@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require_relative '../lib/cron_expression_evaluator.rb'
 require_relative '../lib/expression_printer.rb'
 
@@ -23,7 +25,9 @@ module PrettyCron
   private
 
   def self.correct_splats(argv_array)
-    filename = caller_locations.first.path
+    #had to hardcode filename as changed when using shebang
+    #filename = caller_locations.first.path  
+    filename = 'pretty_cron.rb'
     return argv_array.map{ |string| string == filename ? '*' : string}
   end
 
