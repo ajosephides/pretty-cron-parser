@@ -13,6 +13,7 @@ class CronExpressionEvaluator
   def convert_to_integers_array()
     return range_lookup if (@expression_string == '*')
     return [@expression_string.to_i] if (is_integer?(@expression_string))
+    return hyphen_range(@expression_string) if (contains_hyphen?(@expression_string))
   end
 
   private
@@ -23,11 +24,20 @@ class CronExpressionEvaluator
     return (min..max).to_a
   end
 
+  def hyphen_range(string)
+    string_characters = string.partition('-')
+    hypen_index = string_characters.index('-')
+    min = string_characters[hypen_index - 1].to_i
+    max = string_characters[hypen_index + 1].to_i
+    return (min..max).to_a
+  end
+
   def is_integer?(string)
     string.to_i.to_s == string
   end
 
-
-
+  def contains_hyphen?(string)
+    string.include?('-')
+  end
 
 end

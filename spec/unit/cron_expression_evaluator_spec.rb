@@ -41,9 +41,16 @@ describe CronExpressionEvaluator do
     end
 
     it 'returns the nil if not an expression defined' do
-      cron_eval = CronExpressionEvaluator.new('1-5', 2)
+      cron_eval = CronExpressionEvaluator.new('*/5', 2)
       expect(cron_eval.convert_to_integers_array).to eq(nil)
     end
+
+    it 'returns a range if expression has a hypen' do
+      cron_eval = CronExpressionEvaluator.new('1-10', 0)
+      expect(cron_eval.convert_to_integers_array).to eq((1..10).to_a)
+    end
+
+
 
   end
 
