@@ -14,6 +14,8 @@ class CronExpressionEvaluator
     return range_lookup if (@expression_string == '*')
     return [@expression_string.to_i] if (is_integer?(@expression_string))
     return hyphen_range(@expression_string) if (contains_hyphen?(@expression_string))
+    return comma_list(@expression_string) if (contains_comma?(@expression_string))
+
   end
 
   private
@@ -32,12 +34,20 @@ class CronExpressionEvaluator
     return (min..max).to_a
   end
 
+  def comma_list(string)
+    return string.split(',').map{ |number| number.to_i }
+  end
+
   def is_integer?(string)
     string.to_i.to_s == string
   end
 
   def contains_hyphen?(string)
     string.include?('-')
+  end
+
+  def contains_comma?(string)
+    string.include?(',')
   end
 
 end

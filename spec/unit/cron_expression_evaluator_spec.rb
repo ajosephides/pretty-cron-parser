@@ -50,6 +50,11 @@ describe CronExpressionEvaluator do
       expect(cron_eval.convert_to_integers_array).to eq((1..10).to_a)
     end
 
+    it 'returns a list of values seperated by ","' do
+      cron_eval = CronExpressionEvaluator.new('1,4,5,8,10', 1)
+      expect(cron_eval.convert_to_integers_array).to eq([1,4,5,8,10])
+    end
+
 
 
   end
