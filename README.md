@@ -21,7 +21,7 @@ This is cron expression pretty printer as part of the technical interview for De
 * in main project directory please run the command `rspec`
 
 ## Example
-![](ADD URL HERE)
+![example](https://github.com/ajosephides/pretty-cron-parser/blob/master/public/cron_parser_working_example_screenshot.png)
 
 ## Known issues to do work on
 * currently the parser doesn't work with a compound expression e.g. `1,3,5,6,10-20`  or  `5-15/5`
