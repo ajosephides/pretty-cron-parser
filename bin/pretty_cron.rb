@@ -29,4 +29,4 @@ module PrettyCron
 
 end
 
-# PrettyCron.run(ARGV)
+ENV['PR_CRON_ENV'] == 'test' ? nil : PrettyCron.run(ARGV)
