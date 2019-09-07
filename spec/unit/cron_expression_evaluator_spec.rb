@@ -40,11 +40,6 @@ describe CronExpressionEvaluator do
       expect(cron_eval.convert_to_integers_array).to eq([5])
     end
 
-    it 'returns the nil if not an expression defined' do
-      cron_eval = CronExpressionEvaluator.new('*/5', 2)
-      expect(cron_eval.convert_to_integers_array).to eq(nil)
-    end
-
     it 'returns a range if expression has a hypen' do
       cron_eval = CronExpressionEvaluator.new('1-10', 0)
       expect(cron_eval.convert_to_integers_array).to eq((1..10).to_a)
@@ -55,7 +50,10 @@ describe CronExpressionEvaluator do
       expect(cron_eval.convert_to_integers_array).to eq([1,4,5,8,10])
     end
 
-
+    it 'returns a list of intervals for a "/" operator if used with "*" operator' do
+      cron_eval = CronExpressionEvaluator.new('*/10', 0)
+      expect(cron_eval.convert_to_integers_array).to eq([0,10,20,30,40,50])
+    end
 
   end
 
