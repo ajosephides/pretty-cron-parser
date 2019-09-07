@@ -1,8 +1,9 @@
 require_relative '../lib/cron_expression_evaluator.rb'
+require_relative '../lib/expression_printer.rb'
 
 module PrettyCron
 
-  def self.run(expressionArray, expression_evaluator = CronExpressionEvaluator)
+  def self.run(expressionArray, expression_evaluator = CronExpressionEvaluator, expression_printer = ExpressionPrinter)
     raise 'There are the wrong number of arguments' unless expressionArray.length == 6
     # correct the splat operator
     expressions = correct_splats(expressionArray)
@@ -14,15 +15,10 @@ module PrettyCron
       evaluator.convert_to_integers_array
     end
 
+    evaluated_expressions_and_command = evaluated_expressions.push([expressions[5]])
     # array of integers to be passes to printer
-    p evaluated_expressions
-    
-
-    
+    expression_printer.print(evaluated_expressions_and_command)
   end
-
-
-
 
   private
 
