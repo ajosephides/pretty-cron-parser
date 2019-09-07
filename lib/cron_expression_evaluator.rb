@@ -12,6 +12,7 @@ class CronExpressionEvaluator
 
   def convert_to_integers_array()
     return range_lookup if (@expression_string == '*')
+    return [@expression_string.to_i] if (is_integer?(@expression_string))
   end
 
   private
@@ -20,6 +21,10 @@ class CronExpressionEvaluator
     min = Range_max_min[@type][:min]
     max = Range_max_min[@type][:max]
     return (min..max).to_a
+  end
+
+  def is_integer?(string)
+    string.to_i.to_s == string
   end
 
 
