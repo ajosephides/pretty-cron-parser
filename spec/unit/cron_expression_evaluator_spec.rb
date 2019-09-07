@@ -9,6 +9,15 @@ describe CronExpressionEvaluator do
   end
 
 
+  describe '#convertToIntegersArray' do
+    it 'returns the correct range for a single "*" expression - seconds' do
+      cron_eval = CronExpressionEvaluator.new('*', 0)
+      expect(cron_eval.convert_to_integers_array).to eq((0..59).to_a)
+    end
+
+  end
+
+
 
 
 
