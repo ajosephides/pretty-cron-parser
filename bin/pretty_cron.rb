@@ -13,7 +13,7 @@ module PrettyCron
     expressions = correct_splats(expressionArray)
 
     # split array so final element is command.
-    # loop through each element and comprehend value - return an array of integers
+    # loop through each element and validate expression and then comprehend value - return an array of integers
     evaluated_expressions = expressions[0,5].map.with_index do |string, index|
       validate_expression = expression_validator.new(string, index)
       if validate_expression.valid_input?
@@ -22,6 +22,7 @@ module PrettyCron
       end
     end
 
+    # add command back to list of inputs
     evaluated_expressions_and_command = evaluated_expressions.push([expressions[5]])
     # array of integers to be passes to printer
     expression_printer.print(evaluated_expressions_and_command)

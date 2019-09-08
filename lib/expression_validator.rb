@@ -13,20 +13,23 @@ class ExpressionValidator
 
   def valid_input?()
     !contains_alphabetic_character?(@expression_string) ? true : (raise "The #{@type} expression contains alphabetic characters" )
+    
     if (is_integer?(@expression_string))
       integer_in_range?(@expression_string, @type) ? true : (raise "The #{@type} value is out of range")
     end
+    
     if (contains_hyphen?(@expression_string))
       range_in_range?(@expression_string, @type) ? true : (raise "One of the #{@type} ranges is out of range")
     end
+    
     if (contains_comma?(@expression_string))
       comma_list(@expression_string).each do |value|
         integer_in_range?(value, @type) ? true : (raise "One of the comma seperated values in #{@type} value is out of range")
       end
       return true
     end
+    
     return true
-
   end
 
 
