@@ -54,6 +54,11 @@ describe ExpressionValidator do
       expect { checker.valid_input? }.to raise_error(RuntimeError)
     end
 
+    it 'raises and error if input has any letters in the string' do
+      checker = ExpressionValidator.new("sorry", 2)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
   end
 
 

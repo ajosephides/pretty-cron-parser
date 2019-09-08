@@ -12,8 +12,9 @@ class ExpressionValidator
 
 
   def valid_input?()
+    !contains_alphabetic_character?(@expression_string) ? true : (raise "The #{@type} expression contains alphabetic characters" )
     if (is_integer?(@expression_string))
-      integer_in_range?(@expression_string, @type) ? true : (raise "Your #{@type} value is out of range")
+      integer_in_range?(@expression_string, @type) ? true : (raise "The #{@type} value is out of range")
     end
   end
 
@@ -27,5 +28,9 @@ class ExpressionValidator
   def integer_in_range?(string, type)
     value = string.to_i
     value >= Range_max_min[type][:min] && value <= Range_max_min[type][:max] ? true : false
+  end
+
+  def contains_alphabetic_character?(string)
+    string.count("a-zA-Z") > 0 ? true : false
   end
 end
