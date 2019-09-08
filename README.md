@@ -23,8 +23,9 @@ This is cron expression pretty printer as part of the technical interview for De
 ## Example
 ![example](https://github.com/ajosephides/pretty-cron-parser/blob/master/public/cron_parser_working_example_screenshot.png)
 
-## Known issues to do work on
+## Areas to improve
 * currently the parser doesn't work with a compound expression e.g. `1,3,5,6,10-20`  or  `5-15/5`
 * day of week and month do not work with 3 letter strings. Integer values only
-* further error checking
+* further error checking - currently validation tests assume input valid unless certain criteria. It is permissive rather than strict.
 * printing method is a little hacky
+* output doesn't validate against itself... e.g input `* * * 2 * /some/command` will output all dom (1-31) and not (1-28 or 29). Unknown if this is a requirement
