@@ -84,11 +84,31 @@ describe ExpressionValidator do
       expect { checker.valid_input? }.to raise_error(RuntimeError)    
     end
 
+    it 'raises an error if any of the comma separated values are out of bounds - mins' do
+      checker = ExpressionValidator.new("1,2,3,4,5,45,100", 0)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)  
+    end
 
+    it 'raises an error if any of the comma separated values are out of bounds - hours' do
+      checker = ExpressionValidator.new("1,2,3,4,5,45,100", 1)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)  
+    end
+
+    it 'raises an error if any of the comma separated values are out of bounds - dom' do
+      checker = ExpressionValidator.new("1,2,3,4,5,45,100", 2)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)  
+    end
+
+    it 'raises an error if any of the comma separated values are out of bounds - month' do
+      checker = ExpressionValidator.new("1,2,3,4,5,45,100", 3)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)  
+    end
+
+    it 'raises an error if any of the comma separated values are out of bounds - dom' do
+      checker = ExpressionValidator.new("1,2,3,4,5,45,100", 4)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)  
+    end
 
   end
-
-
-
 
 end

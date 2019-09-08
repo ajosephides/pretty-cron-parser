@@ -19,6 +19,12 @@ class ExpressionValidator
     if (contains_hyphen?(@expression_string))
       range_in_range?(@expression_string, @type) ? true : (raise "One of the #{@type} ranges is out of range")
     end
+    if (contains_comma?(@expression_string))
+      comma_list(@expression_string).each do |value|
+        integer_in_range?(value, @type) ? true : (raise "One of the comma seperated values in #{@type} value is out of range")
+      end
+      return true
+    end
 
   end
 
@@ -42,12 +48,20 @@ class ExpressionValidator
     integer_in_range?(min, type) && integer_in_range?(max, type) ? true : false
   end
 
+  def comma_list(string)
+    return string.split(',').map{ |number| number.to_i }
+  end
+
   def contains_alphabetic_character?(string)
     string.count("a-zA-Z") > 0 ? true : false
   end
 
   def contains_hyphen?(string)
     string.include?('-')
+  end
+
+  def contains_comma?(string)
+    string.include?(',')
   end
 
 
