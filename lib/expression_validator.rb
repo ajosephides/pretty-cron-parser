@@ -13,11 +13,7 @@ class ExpressionValidator
 
   def valid_input?()
     if (is_integer?(@expression_string))
-      if(integer_in_range?(@expression_string, @type))
-        return true
-      else
-        raise "Your #{@type} value is out of range"
-      end 
+      integer_in_range?(@expression_string, @type) ? true : (raise "Your #{@type} value is out of range")
     end
   end
 
