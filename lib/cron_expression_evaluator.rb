@@ -16,7 +16,6 @@ class CronExpressionEvaluator
     return hyphen_range(@expression_string) if (contains_hyphen?(@expression_string))
     return comma_list(@expression_string) if (contains_comma?(@expression_string))
     return shilling_list(@expression_string) if (contains_shilling?(@expression_string))
-
   end
 
   private
