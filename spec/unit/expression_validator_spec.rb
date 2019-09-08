@@ -1,0 +1,62 @@
+require_relative '../../lib/expression_validator.rb'
+
+
+describe ExpressionValidator do
+  describe '#valid_input?' do
+
+    it 'raises an error if input integer is greater than type allows - mins' do
+      checker = ExpressionValidator.new("100",0)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+    it 'raises an error if input integer is greater than type allows - hours' do
+      checker = ExpressionValidator.new("100",1)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+    it 'raises an error if input integer is greater than type allows - dom' do
+      checker = ExpressionValidator.new("100",2)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+    it 'raises an error if input integer is greater than type allows - month' do
+      checker = ExpressionValidator.new("100",3)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+    it 'raises an error if input integer is greater than type allows - dow' do
+      checker = ExpressionValidator.new("100",4)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+    it 'raises an error if input integer is less than type allows - mins' do
+      checker = ExpressionValidator.new("-1",0)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+    it 'raises an error if input integer is less than type allows - hour' do
+      checker = ExpressionValidator.new("-1",1)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+    it 'raises an error if input integer is less than type allows - dom' do
+      checker = ExpressionValidator.new("-1",2)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+    it 'raises an error if input integer is less than type allows - month' do
+      checker = ExpressionValidator.new("-1",3)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+    it 'raises an error if input integer is less than type allows - dow' do
+      checker = ExpressionValidator.new("-1",4)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)
+    end
+
+  end
+
+
+
+
+end
