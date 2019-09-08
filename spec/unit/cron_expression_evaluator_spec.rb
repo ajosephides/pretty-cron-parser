@@ -40,12 +40,12 @@ describe CronExpressionEvaluator do
       expect(cron_eval.convert_to_integers_array).to eq([5])
     end
 
-    it 'returns a range if expression has a hypen' do
+    it 'returns a range if expression has a hyphen' do
       cron_eval = CronExpressionEvaluator.new('1-10', 0)
       expect(cron_eval.convert_to_integers_array).to eq((1..10).to_a)
     end
 
-    it 'returns a list of values seperated by ","' do
+    it 'returns a list of values separated by ","' do
       cron_eval = CronExpressionEvaluator.new('1,4,5,8,10', 1)
       expect(cron_eval.convert_to_integers_array).to eq([1,4,5,8,10])
     end
