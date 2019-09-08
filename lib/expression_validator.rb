@@ -26,10 +26,6 @@ class ExpressionValidator
 
   def integer_in_range?(string, type)
     value = string.to_i
-    if (value >= Range_max_min[type][:min] && value <= Range_max_min[type][:max])
-      return true
-    else
-      return false
-    end
+    value >= Range_max_min[type][:min] && value <= Range_max_min[type][:max] ? true : false
   end
 end
