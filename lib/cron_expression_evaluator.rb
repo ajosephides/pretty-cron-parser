@@ -29,9 +29,9 @@ class CronExpressionEvaluator
 
   def hyphen_range(string)
     string_characters = string.partition('-')
-    hypen_index = string_characters.index('-')
-    min = string_characters[hypen_index - 1].to_i
-    max = string_characters[hypen_index + 1].to_i
+    hyphen_index = string_characters.index('-')
+    min = string_characters[hyphen_index - 1].to_i
+    max = string_characters[hyphen_index + 1].to_i
     return (min..max).to_a
   end
 
