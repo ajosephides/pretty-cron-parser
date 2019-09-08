@@ -109,6 +109,11 @@ describe ExpressionValidator do
       expect { checker.valid_input? }.to raise_error(RuntimeError)  
     end
 
+    it 'returns true for a "*" input' do
+      checker = ExpressionValidator.new("*", 4)
+      expect(checker.valid_input?).to be true  
+    end
+
   end
 
 end

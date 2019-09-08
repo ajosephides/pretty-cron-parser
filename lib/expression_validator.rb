@@ -25,6 +25,7 @@ class ExpressionValidator
       end
       return true
     end
+    return true
 
   end
 
