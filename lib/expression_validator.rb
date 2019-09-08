@@ -16,6 +16,10 @@ class ExpressionValidator
     if (is_integer?(@expression_string))
       integer_in_range?(@expression_string, @type) ? true : (raise "The #{@type} value is out of range")
     end
+    if (contains_hyphen?(@expression_string))
+      range_in_range?(@expression_string, @type) ? true : (raise "One of the #{@type} ranges is out of range")
+    end
+
   end
 
 
@@ -30,7 +34,21 @@ class ExpressionValidator
     value >= Range_max_min[type][:min] && value <= Range_max_min[type][:max] ? true : false
   end
 
+  def range_in_range?(string, type)
+    string_characters = string.partition('-')
+    hyphen_index = string_characters.index('-')
+    min = string_characters[hyphen_index - 1].to_i
+    max = string_characters[hyphen_index + 1].to_i
+    integer_in_range?(min, type) && integer_in_range?(max, type) ? true : false
+  end
+
   def contains_alphabetic_character?(string)
     string.count("a-zA-Z") > 0 ? true : false
   end
+
+  def contains_hyphen?(string)
+    string.include?('-')
+  end
+
+
 end

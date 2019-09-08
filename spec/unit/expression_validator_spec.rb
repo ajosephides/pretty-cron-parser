@@ -54,10 +54,37 @@ describe ExpressionValidator do
       expect { checker.valid_input? }.to raise_error(RuntimeError)
     end
 
-    it 'raises and error if input has any letters in the string' do
+    it 'raises an error if input has any letters in the string' do
       checker = ExpressionValidator.new("sorry", 2)
       expect { checker.valid_input? }.to raise_error(RuntimeError)
     end
+
+    it 'raises an error if the ranges of the hyphen are out of bounds - mins' do
+      checker = ExpressionValidator.new("1 - 100", 0)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)    
+    end
+
+    it 'raises an error if the ranges of the hyphen are out of bounds - hour' do
+      checker = ExpressionValidator.new("1 - 100", 1)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)    
+    end
+
+    it 'raises an error if the ranges of the hyphen are out of bounds - dom' do
+      checker = ExpressionValidator.new("1 - 100", 2)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)    
+    end
+
+    it 'raises an error if the ranges of the hyphen are out of bounds - month' do
+      checker = ExpressionValidator.new("1 - 100", 3)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)    
+    end
+
+    it 'raises an error if the ranges of the hyphen are out of bounds - dow' do
+      checker = ExpressionValidator.new("1 - 100", 4)
+      expect { checker.valid_input? }.to raise_error(RuntimeError)    
+    end
+
+
 
   end
 
