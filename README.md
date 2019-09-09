@@ -14,7 +14,7 @@ This is cron expression pretty printer as part of the technical interview for De
 ## Installation
 * please clone repo
 * please run `bundle install`
-* please navigate to `/bin/` directory and run `chmod + x pretty_cron.rb`
+* please navigate to `/bin/` directory and run `chmod +x pretty_cron.rb`
 * to execute please run from within `/bin` and run for example `./pretty_cron.rb * * * * 1 /Some/Type/Of/Command`
 
 ## Tests
